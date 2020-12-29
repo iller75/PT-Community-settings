@@ -1,0 +1,14 @@
+// Created by Hoffer49
+
+1h_ATR_indicator = EMA
+1h_ATR_candle_period = 3600
+1h_ATR_length = 14
+1h_ATR_offset = 1
+
+in PAIRS config:
+DEFAULT_sell_strategy_formula = SA >= SB
+
+DEFAULT_A_sell_Strategy = GAIN
+
+DEFAULT_B_sell_strategy_label = 1h_ATR
+DEFAULT_B_sell_strategy = ATRPERCENTAGE
