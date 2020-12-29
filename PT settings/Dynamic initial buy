@@ -1,0 +1,6 @@
+why don't you use a dynamic initial buy? with a fixed initial buy you risk more on more volatile pairs. 
+I use a quite simple dynamic initial cost to risk 1% of my TCV:  (100/(1.5 * SZ))%. strat Z is ATR so if the stoploss is 10% I enter with 10% of my TCV, 
+and the stoploss is 1% of my TCV. Unfortunately with long trades the ATR changes so its approximate
+
+
+Formula Initial cost.. (100/(1.5 * SZ))%
