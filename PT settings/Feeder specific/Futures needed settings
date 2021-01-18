@@ -1,0 +1,5 @@
+For coin futures on binance with feeder you need to set 
+Basecurrency to BTC //or DOT etc depending on what base currency you want to accumulate
+BaseCoinPair to BTCUSD_PERP
+Enabled coins should be Perp if you only intend to trend the perp coin and not quarterly
+
