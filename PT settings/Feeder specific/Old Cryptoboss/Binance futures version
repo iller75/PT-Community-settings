@@ -1,3 +1,5 @@
+// This strat can be highly dangerous to run so make sure you run it on a testbot first! Probably also need somewhat large accounts
+
 {
 	"PtFeeder": {
 		// PTF settings ** NEEDS OPTIMIZINGx
