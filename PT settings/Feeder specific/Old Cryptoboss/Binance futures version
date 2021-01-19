@@ -1,5 +1,3 @@
-// This strat can be highly dangerous to run so make sure you run it on a testbot first! Probably also need somewhat large accounts
-
 {
 	"PtFeeder": {
 		// PTF settings ** NEEDS OPTIMIZINGx
@@ -17,7 +15,7 @@
 		"DcaMaxTrailingBuy": "0.5",
 		"DcaMinTrailingBuy": "0.15",
 		// PTF COIN LISTS //
-		"ExcludedCoins": "BNB,BCHSV,TUSD,USDC,USDS,ERD,BUSD,BGBP,XRPUP,XRPDOWN,EURO,GBP,ETHUP,ETHDOWN,BTCUP,BTCDOWN,LTCUP,LTCDOWN,LINKUP,LINKDOWN,BNBUP,BNBDOWN,YFIUP,YFIDOWN,UNIUP,UNIDOWN,AAVEUP,AAVEDOWN,DOTUP,DOTDOWN,SUSHIUP,SUSHIDOWN,SXPUP,SXPDOWN,ADAUP,ADADOWN,TRXUP,TRXDOWN,EOSUP,EOSDOWN,XTZUP,XTZDOWN,FILUP,FILDOWN,XLMUP,XLMDOWN", // THETA, DGD    27 nov manually sold or taken to long BCC,BCH,LLT,BTS,WAVES,BNB,ETC,BCD,GTO,NULS,NAS,STRAT,VIA,LEND,SALT,NEBL,PPT,GAS,NAV,ZEN,SC,BCPT,CND,VIBE,KEY
+		"ExcludedCoins": "XRP,BCHSV,TUSD,USDC,USDS,ERD,BUSD,BGBP,XRPUP,XRPDOWN,EURO,GBP,ETHUP,ETHDOWN,BTCUP,BTCDOWN,LTCUP,LTCDOWN,LINKUP,LINKDOWN,BNBUP,BNBDOWN,YFIUP,YFIDOWN,UNIUP,UNIDOWN,AAVEUP,AAVEDOWN,DOTUP,DOTDOWN,SUSHIUP,SUSHIDOWN,SXPUP,SXPDOWN,ADAUP,ADADOWN,TRXUP,TRXDOWN,EOSUP,EOSDOWN,XTZUP,XTZDOWN,FILUP,FILDOWN,XLMUP,XLMDOWN", // THETA, DGD    27 nov manually sold or taken to long BCC,BCH,LLT,BTS,WAVES,BNB,ETC,BCD,GTO,NULS,NAS,STRAT,VIA,LEND,SALT,NEBL,PPT,GAS,NAV,ZEN,SC,BCPT,CND,VIBE,KEY
 		//"DCAIncludedCoins": "",
 		//"DCAExcludedCoins": "",			//** NEEDS OPTIMIZING
 		//"EnabledCoinsOnly": "",
@@ -85,12 +83,13 @@
 		"DcaBuyMarginType":"isolated",
 
 		// SAFETY SETTINGS //
-		//"InitialCost": "0", //offset by POSM
+        //"InitialCost": "0", //offset by POSM
+        "TradingPairsBuyPriority":"spreadasc,volumedesc",
 		"MaxBuySpread": "1", //max order book spread
 		"MinOrderbookVolumePercentage": "101",
 		"MinOrderbookPriceSlippagePercentage": "0.1",
 		"BuyMinChangePercentage": "-7", //overidden by Strategy
-		"BuyMaxChangePercentage": "7",
+		"BuyMaxChangePercentage": "10",
 		"RebuyTimeout": "1", //changed 10 3.07 //offset/overidden by Strategy risk
 		"SellWallOrderbookDepth": "50",
 		"SellWallDiffPercentage": "5000",
@@ -105,11 +104,11 @@
 		"DCAMaxTradingPairs": "12", //offset by POSM
 		"DcaMinOrderbookVolumePercentage": "101",
 		"DcaMinOrderbookPriceSlippagePercentage": "0.1", //** NEEDS OPTIMIZING
-		"DcaBuyMinChangePercentage": "-7", //added 26.06
-		"DcaBuyMaxChangePercentage": "-7", //added 26.06
+		//"DcaBuyMinChangePercentage": "-7", //added 26.06
+		//"DcaBuyMaxChangePercentage": "-7", //added 26.06
 		"DcaSellWallOrderbookDepth": "50",
 		"DcaSellWallDiffPercentage": "5000",
-		"DcaRebuyTimeout": "1", //changed 5 30.06 //offset/overidden by Strategy risk
+		"DcaRebuyTimeout": "5", //changed 5 30.06 //offset/overidden by Strategy risk
 		"DcaOrderbookProfitCalculation": "true", //added 26.06
 		"SellOnlyModeEnabled": "false",
 
@@ -1622,7 +1621,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "87"
 		},
 		{
@@ -1671,7 +1670,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "88"
 		},
 		{
@@ -1727,7 +1726,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "88"
 		},
 		{
@@ -1774,7 +1773,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "88"
 		},
 		{
@@ -1823,7 +1822,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "89"
 		},
 		{
@@ -1876,7 +1875,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "90"
 		},
 		{
@@ -1924,7 +1923,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "40", //4hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //4hr rebuy timeout for High risk breakout strategy
 			"Weight": "91"
 		},
 		{
@@ -1973,7 +1972,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "40", //4hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //4hr rebuy timeout for High risk breakout strategy
 			"Weight": "92"
 		},
 		{
@@ -2021,7 +2020,7 @@
 			"JBuyValueLimit": "0",
 			"MinBuyVolume": "2000000", // needs optimizing
 			"MinBuyPrice": "0", // needs optimizing
-			"RebuyTimeout": "60", // needs optimizing
+			"RebuyTimeout": "10", // needs optimizing
 			"BuyMinChangePercentage": "1", // needs optimizing
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
@@ -2058,7 +2057,7 @@
 			"MaxTrailingBuy": "0.2",
 			"MinTrailingBuy": "0.1",
 			"RebuyTimeout": "80",
-			"DcaRebuyTimeout": "80",
+			"DcaRebuyTimeout": "10",
 			"StickyTimer": "5",
 			"Weight": "27"
 		},
@@ -2073,7 +2072,7 @@
 			"MaxTrailingProfit": "0.75",
 			"MinTrailingProfit": "0.1",
 			"RebuyTimeout": "80",
-			"DcaRebuyTimeout": "80",
+			"DcaRebuyTimeout": "10",
 			"Weight": "27"
 		},
 		{
@@ -2103,7 +2102,7 @@
 			"DcaKBuyValue": "-50",
 			"DcaMinBuyVolume": "500000", // needs optimizing
 			"DcaMinBuyPrice": "0", // needs optimizing
-			"DcaRebuyTimeout": "80", // needs optimizing
+			"DcaRebuyTimeout": "10", // needs optimizing
 			"DcaBuyMinChangePercentage": "-20", // needs optimizing
 			"DcaBuyMaxChangePercentage": "1", // needs optimizing
 			"DcaMaxBuySpread": "3", // needs optimizing
@@ -2123,7 +2122,7 @@
 			"DcaMaxTrailingProfit": "0.75",
 			"DcaMinTrailingProfit": "0.1",
 			"RebuyTimeout": "80",
-			"DcaRebuyTimeout": "80",
+			"DcaRebuyTimeout": "10",
 			"Weight": "27"
 		},
 		{
@@ -2146,7 +2145,7 @@
 			"JBuyStrategy": "DISABLED",
 			"MinBuyVolume": "2000000", // needs optimizing
 			"MinBuyPrice": "0", // needs optimizing
-			"RebuyTimeout": "60", // needs optimizing
+			"RebuyTimeout": "10", // needs optimizing
 			"BuyMinChangePercentage": "-15", // needs optimizing
 			"BuyMaxChangePercentage": "1", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
@@ -2181,7 +2180,7 @@
 			"JBuyStrategy": "DISABLED",
 			"MinBuyVolume": "2000000", // needs optimizing
 			"MinBuyPrice": "0", // needs optimizing
-			"RebuyTimeout": "60", // needs optimizing
+			"RebuyTimeout": "10", // needs optimizing
 			"BuyMinChangePercentage": "-10", // needs optimizing
 			"BuyMaxChangePercentage": "1", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
@@ -3680,7 +3679,7 @@
 			"JBuyStrategy": "DISABLED",
 			"MinBuyVolume": "1000000", // needs optimizing
 			"MinBuyPrice": "0", // needs optimizing
-			"RebuyTimeout": "60", // needs optimizing
+			"RebuyTimeout": "10", // needs optimizing
 			"BuyMinChangePercentage": "1", // needs optimizing
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
@@ -3737,7 +3736,7 @@
 			"DcaBuyMinChangePercentage": "1", // needs optimizing
 			"DcaBuyMaxChangePercentage": "20", // needs optimizing
 			"DcaMaxBuySpread": "2",
-			"DcaRebuyTimeout": "40",
+			"DcaRebuyTimeout": "10",
 			"MinTrailingBuy": "0.33",
 			"MaxTrailingBuy": "0.75",
 			"Weight": "11"
@@ -3783,7 +3782,7 @@
 			"JBuyStrategy": "DISABLED",
 			"MinBuyVolume": "1000000", // needs optimizing
 			"MinBuyPrice": "0", // needs optimizing
-			"RebuyTimeout": "60", // needs optimizing
+			"RebuyTimeout": "10", // needs optimizing
 			"BuyMinChangePercentage": "1", // needs optimizing
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
@@ -4045,7 +4044,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "8"
 		},
 		{
@@ -4091,7 +4090,7 @@
 			"DcaBuyMaxChangePercentage": "20", // needs optimizing
 			"DcaMaxBuySpread": "3", // needs optimizing
 			"DcaTrailingBuy": "0.01",
-			"DcaRebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"DcaRebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "8"
 		},
 		{
@@ -4147,7 +4146,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "7"
 		},
 		{
@@ -4191,7 +4190,7 @@
 			"BuyMaxChangePercentage": "20", // needs optimizing
 			"MaxBuySpread": "3", // needs optimizing
 			"TrailingBuy": "0",
-			"RebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"RebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy 60 on all high risk
 			"Weight": "6"
 		},
 		{
@@ -4239,7 +4238,7 @@
 			"DcaMaxBuySpread": "3", // needs optimizing
 			"DcaMaxTrailingBuy": "0.25",
 			"DcaMinTrailingBuy": "0.01",
-			"DcaRebuyTimeout": "60", //6hr rebuy timeout for High risk breakout strategy
+			"DcaRebuyTimeout": "10", //6hr rebuy timeout for High risk breakout strategy
 			"Weight": "6"
 		},
 		{
@@ -4418,7 +4417,7 @@
 			"DcaKBuyStrategy": "PROFITPERCENTAGE",
 			"DcaKBuyValue": "-50",
 			"DcaMaxBuyTimes": "8",
-			"DcaRebuyTimeout": "60",
+			"DcaRebuyTimeout": "10",
 			"DcaMinBuyPrice": "0.008",
 			"DcaMinBuyVolume": "1000000",
 			"BuyMinChangePercentage": "-14",
@@ -4454,7 +4453,7 @@
 			"DcaKBuyValue": "-50",
 			"DcaMaxBuySpread": "3", // needs optimizing
 			"DcaMaxBuyTimes": "8",
-			"DcaRebuyTimeout": "60",
+			"DcaRebuyTimeout": "10",
 			"DcaMinBuyPrice": "0.008",
 			"DcaMinBuyVolume": "1000000",
 			"DcaBuyMaxChangePercentage": "5",
