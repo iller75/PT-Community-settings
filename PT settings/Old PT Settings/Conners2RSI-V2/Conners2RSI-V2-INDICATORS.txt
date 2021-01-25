@@ -1,0 +1,112 @@
+#
+# CONNORS 2RSI INDICATORS
+#
+
+# Always uses 5 minute candles
+SOM_trigger_length = 288
+
+#
+# Rule 1. The trading pair must be in a long term uptrend according to the 200 day moving average;
+#
+
+# Define how many candles back to look and see if the EMA lines just crossed.
+GOLDENCROSS_cross_candles = 500
+# Define the period (in seconds) used to calculate the EMA lines.
+GOLDENCROSS_candle_period = 300
+# Define the EMA time frame (in candles) used to calculate the fast EMA line.
+GOLDENCROSS_fast_length = 50
+# Define the EMA time frame (in candles) used to calculate the slow EMA line.
+GOLDENCROSS_slow_length = 200
+
+#
+# Rule 2. The trading pair must have high volume;
+#
+# Define the candle size (in seconds) used to calculate STOCHRSIK
+STOCHRSIK_candle_period = 300
+# Define the RSI time frame (in candles) used to calculate the STOCHRSIK (Max 500)
+STOCHRSIK_rsi_length = 2
+# Define the stoch time frame (in candles) used to calculate the STOCHRSIK (Max 500)
+STOCHRSIK_stoch_length = 5
+# Define the time period to be used to calculate the K divergence when using STOCHRSIK
+STOCHRSIK_K = 3
+
+#
+# Rule 3. The trading pair must have good volatility according to teh 100 day moving average;
+#
+
+#
+# Define how many candles back to look and see if the EMA lines just crossed.
+DEATHCROSS_cross_candles = 500
+# Define the period (in seconds) used to calculate the EMA lines.
+DEATHCROSS_candle_period = 300
+# Define the EMA time frame (in candles) used to calculate the fast EMA line.
+DEATHCROSS_fast_length = 50
+# Define the EMA time frame (in candles) used to calculate the slow EMA line.
+DEATHCROSS_slow_length = 100
+
+#
+# Rule 4. The trading pair must be in a strong uptrend;
+#
+
+#
+#Define how many candles back to look and see if the EMA lines just crossed.
+CONNORSCROSS_cross_candles = 500
+#Define the period (in seconds) used to calculate the EMA lines.
+CONNORSCROSS_candle_period = 300
+#Define the EMA time frame (in candles) used to calculate the fast EMA line.
+CONNORSCROSS_fast_length = 20
+#Define the EMA time frame (in candles) used to calculate the slow EMA line.
+CONNORSCROSS_slow_length = 50
+
+#
+# Rule 5. The trading pair is currently down in price;
+# Rule 6. The trading pairs price must be down at least a defined percentage;
+#
+
+# Define how many candles back to look and see if the EMA lines just crossed.
+EMA_cross_candles = 80
+# Define the period (in seconds) used to calculate the EMA lines, note exchange API must support this timing
+EMA_candle_period = 300
+# Define the EMA time frame (in candles) used to calculate the fast EMA line. (Max 500)
+EMA_fast_length = 8
+# Define the EMA time frame (in candles) used to calculate the slow EMA line. (Max 500)
+EMA_slow_length = 13
+
+#
+# Rule 7. The 2 period RSI must be below 20
+# Rule 9. Exit the trade when the 2 period RSI is over 70.
+#
+
+#
+# Define the period (in seconds) used to calculate the RSI lines.
+CONNORSRSI_candle_period = 300
+# Define the RSI time frame (in candles) used by all RSI calculations
+CONNORSRSI_length = 2
+
+#
+# Rule 8. Buy on a lower intraday price opportunity;
+#
+# Define the period (in seconds) used to calculate the STOCHRSI.
+STOCHRSID_candle_period = 300
+# Define the RSI time frame (in candles) used to calculate the STOCHRSI strategies. (Max 500)
+STOCHRSID_rsi_length = 2
+# Define the stoch time frame (in candles) used to calculate the STOCHRSI strategies. (Max 500)
+STOCHRSID_stoch_length = 5
+# Define the time period to be used to calculate the K divergence
+STOCHRSID_K = 3
+# Define the time period to be used to calculate the D divergence
+STOCHRSID_D = 3
+
+#
+# Supporting the Rules
+#
+
+#
+# Define the period (in seconds) used to calculate the MACD lines.
+CONNORSMACD_candle_period = 300
+# Define the MA time frame (in candles) used to calculate the fast MACD line.
+CONNORSMACD_fast_length = 13
+# Define the MA time frame (in candles) used to calculate the slow MACD line.
+CONNORSMACD_slow_length = 21
+# Define the time frame (in days) of the EMA (Exponential Moving Average) of the MACD
+CONNORSMACD_signal = 3

@@ -1,0 +1,184 @@
+# Only buy coins if the buy cost will not let your balance go below specified amount
+DCA_keep_balance = 0
+# Only buy coins if the buy cost will not let your balance go below specified amount in %
+DCA_keep_balance_percentage = 0
+# Define the TOTAL amount a single pair is allowed to cost you when using DCA.
+DEFAULT_DCA_max_cost = 0
+# Define max amount of times DCA is allowed to buy a pair.
+DEFAULT_DCA_max_buy_times = 0
+# Set the loss percentage required before a DCA buy can take place.
+DEFAULT_DCA_buy_trigger = -1
+# Set the percentage of TCV purchased when making a DCA buy.
+DEFAULT_DCA_buy_percentage = 100
+# Only purchase a pair if the 24 hour percentage change is above the min price increase.
+DEFAULT_DCA_buy_min_price_increase = 0
+# Only purchase a pair if the 24 hour percentage change is below the max price increase.
+DEFAULT_DCA_buy_max_price_increase = 0
+# Allow DCA to buy if there's enough volume in order book to fill the order.
+DEFAULT_DCA_min_buy_volume = 100
+#DEFAULT_DCA_min_order_book_volume_percentage=150
+DEFAULT_DCA_min_orderbook_volume_percentage = 100
+# Max spread % between lowest ask and highest bid to allow a new buy order.
+DEFAULT_DCA_max_buy_spread = 2
+# The timeout period (in minutes) that the bot is not allowed to buy a coin after it was last DCA'ed.
+DEFAULT_DCA_rebuy_timeout = 15
+# The time period (in minutes) that has passed since we bought a particular pair, if exceeded then create a pending order for that pair
+DEFAULT_DCA_pending_order_wait_time = 0
+# Set this value to true to allow DCA to continue buying even if no new buys are allowed
+# as the bot is in Sell Only Mode. This is often used when you want the bot to stop buying
+# new coins, but continue to DCA and attempt to get rid of existing coins.
+DEFAULT_DCA_ignore_sell_only_mode = true
+# Implements a Fibonacci sequence strategy for doing True Martingale DCA buys
+DEFAULT_DCA_A_buy_strategy = EMACROSS
+DEFAULT_DCA_A_buy_value = -0.01
+DEFAULT_DCA_A_buy_value_limit = -10
+#
+DEFAULT_DCA_B_buy_strategy = LOWBB
+DEFAULT_DCA_B_buy_value = 35
+DEFAULT_DCA_B_buy_value_limit = -30
+#
+DEFAULT_DCA_C_buy_strategy = RSI
+DEFAULT_DCA_C_buy_value = 50
+DEFAULT_DCA_C_buy_value_limit = 0
+# The buy trigger loss percentage required before a DCA buy can take place.
+DEFAULT_DCA_buy_trigger_1 = -1
+DEFAULT_DCA_buy_trigger_2 = -1
+DEFAULT_DCA_buy_trigger_3 = -2
+DEFAULT_DCA_buy_trigger_4 = -3
+DEFAULT_DCA_buy_trigger_5 = -5
+DEFAULT_DCA_buy_trigger_6 = -8
+DEFAULT_DCA_buy_trigger_7 = -13
+DEFAULT_DCA_buy_trigger_8 = -21
+DEFAULT_DCA_buy_trigger_9 = -34
+DEFAULT_DCA_buy_trigger_10 = -55
+# Ensure we do true Dollar Cost Averaging (Martingale) by buying the same number
+# of coins each time and keeping our purchases as a multiple of our initial cost.
+DEFAULT_DCA_buy_percentage_1 = 100
+DEFAULT_DCA_buy_percentage_2 = 50
+DEFAULT_DCA_buy_percentage_3 = 33.3333333333333
+DEFAULT_DCA_buy_percentage_4 = 25
+DEFAULT_DCA_buy_percentage_5 = 20
+DEFAULT_DCA_buy_percentage_6 = 16.6666666666667
+DEFAULT_DCA_buy_percentage_7 = 14.2857142857143
+DEFAULT_DCA_buy_percentage_8 = 12.5
+DEFAULT_DCA_buy_percentage_9 = 11.1111111111111
+DEFAULT_DCA_buy_percentage_10 = 10
+DEFAULT_DCA_buy_percentage_11 = 9.09090909090909
+DEFAULT_DCA_buy_percentage_12 = 8.33333333333333
+DEFAULT_DCA_buy_percentage_13 = 7.69230769230769
+DEFAULT_DCA_buy_percentage_14 = 7.14285714285714
+DEFAULT_DCA_buy_percentage_15 = 6.66666666666667
+DEFAULT_DCA_buy_percentage_16 = 6.25
+DEFAULT_DCA_buy_percentage_17 = 5.88235294117647
+DEFAULT_DCA_buy_percentage_18 = 5.55555555555556
+DEFAULT_DCA_buy_percentage_19 = 5.26315789473684
+DEFAULT_DCA_buy_percentage_20 = 5
+DEFAULT_DCA_buy_percentage_21 = 4.76190476190476
+DEFAULT_DCA_buy_percentage_22 = 4.54545454545455
+DEFAULT_DCA_buy_percentage_23 = 4.34782608695652
+DEFAULT_DCA_buy_percentage_24 = 4.16666666666667
+DEFAULT_DCA_buy_percentage_25 = 4
+DEFAULT_DCA_buy_percentage_26 = 3.84615384615385
+DEFAULT_DCA_buy_percentage_27 = 3.7037037037037
+DEFAULT_DCA_buy_percentage_28 = 3.57142857142857
+DEFAULT_DCA_buy_percentage_29 = 3.44827586206897
+DEFAULT_DCA_buy_percentage_30 = 3.33333333333333
+DEFAULT_DCA_buy_percentage_31 = 3.2258064516129
+DEFAULT_DCA_buy_percentage_32 = 3.125
+DEFAULT_DCA_buy_percentage_33 = 3.03030303030303
+DEFAULT_DCA_buy_percentage_34 = 2.94117647058824
+DEFAULT_DCA_buy_percentage_35 = 2.85714285714286
+DEFAULT_DCA_buy_percentage_36 = 2.77777777777778
+DEFAULT_DCA_buy_percentage_37 = 2.7027027027027
+DEFAULT_DCA_buy_percentage_38 = 2.63157894736842
+DEFAULT_DCA_buy_percentage_39 = 2.56410256410256
+DEFAULT_DCA_buy_percentage_40 = 2.5
+DEFAULT_DCA_buy_percentage_41 = 2.4390243902439
+DEFAULT_DCA_buy_percentage_42 = 2.38095238095238
+DEFAULT_DCA_buy_percentage_43 = 2.32558139534884
+DEFAULT_DCA_buy_percentage_44 = 2.27272727272727
+DEFAULT_DCA_buy_percentage_45 = 2.22222222222222
+DEFAULT_DCA_buy_percentage_46 = 2.17391304347826
+DEFAULT_DCA_buy_percentage_47 = 2.12765957446808
+DEFAULT_DCA_buy_percentage_48 = 2.08333333333333
+DEFAULT_DCA_buy_percentage_49 = 2.04081632653061
+DEFAULT_DCA_buy_percentage_50 = 2
+DEFAULT_DCA_buy_percentage_51 = 1.96078431372549
+DEFAULT_DCA_buy_percentage_52 = 1.92307692307692
+DEFAULT_DCA_buy_percentage_53 = 1.88679245283019
+DEFAULT_DCA_buy_percentage_54 = 1.85185185185185
+DEFAULT_DCA_buy_percentage_55 = 1.81818181818182
+DEFAULT_DCA_buy_percentage_56 = 1.78571428571429
+DEFAULT_DCA_buy_percentage_57 = 1.75438596491228
+DEFAULT_DCA_buy_percentage_58 = 1.72413793103448
+DEFAULT_DCA_buy_percentage_59 = 1.69491525423729
+DEFAULT_DCA_buy_percentage_60 = 1.66666666666667
+DEFAULT_DCA_buy_percentage_61 = 1.63934426229508
+DEFAULT_DCA_buy_percentage_62 = 1.61290322580645
+DEFAULT_DCA_buy_percentage_63 = 1.58730158730159
+DEFAULT_DCA_buy_percentage_64 = 1.5625
+DEFAULT_DCA_buy_percentage_65 = 1.53846153846154
+DEFAULT_DCA_buy_percentage_66 = 1.51515151515151
+DEFAULT_DCA_buy_percentage_67 = 1.49253731343284
+DEFAULT_DCA_buy_percentage_68 = 1.47058823529412
+DEFAULT_DCA_buy_percentage_69 = 1.44927536231884
+DEFAULT_DCA_buy_percentage_70 = 1.42857142857143
+DEFAULT_DCA_buy_percentage_71 = 1.40845070422535
+DEFAULT_DCA_buy_percentage_72 = 1.38888888888889
+DEFAULT_DCA_buy_percentage_73 = 1.36986301369863
+DEFAULT_DCA_buy_percentage_74 = 1.35135135135135
+DEFAULT_DCA_buy_percentage_75 = 1.33333333333333
+DEFAULT_DCA_buy_percentage_76 = 1.31578947368421
+DEFAULT_DCA_buy_percentage_77 = 1.2987012987013
+DEFAULT_DCA_buy_percentage_78 = 1.28205128205128
+DEFAULT_DCA_buy_percentage_79 = 1.26582278481013
+DEFAULT_DCA_buy_percentage_80 = 1.25
+DEFAULT_DCA_buy_percentage_81 = 1.23456790123457
+DEFAULT_DCA_buy_percentage_82 = 1.21951219512195
+DEFAULT_DCA_buy_percentage_83 = 1.20481927710843
+DEFAULT_DCA_buy_percentage_84 = 1.19047619047619
+DEFAULT_DCA_buy_percentage_85 = 1.17647058823529
+DEFAULT_DCA_buy_percentage_86 = 1.16279069767442
+DEFAULT_DCA_buy_percentage_87 = 1.14942528735632
+DEFAULT_DCA_buy_percentage_88 = 1.13636363636364
+DEFAULT_DCA_buy_percentage_89 = 1.12359550561798
+DEFAULT_DCA_buy_percentage_90 = 1.11111111111111
+DEFAULT_DCA_buy_percentage_91 = 1.0989010989011
+DEFAULT_DCA_buy_percentage_92 = 1.08695652173913
+DEFAULT_DCA_buy_percentage_93 = 1.0752688172043
+DEFAULT_DCA_buy_percentage_94 = 1.06382978723404
+DEFAULT_DCA_buy_percentage_95 = 1.05263157894737
+DEFAULT_DCA_buy_percentage_96 = 1.04166666666667
+DEFAULT_DCA_buy_percentage_97 = 1.03092783505155
+DEFAULT_DCA_buy_percentage_98 = 1.02040816326531
+DEFAULT_DCA_buy_percentage_99 = 1.01010101010101
+DEFAULT_DCA_buy_percentage_100 = 1
+# Once all buy strategies are true, the bot will make note of the current ask price and begin trailing.
+DEFAULT_DCA_trailing_buy = 0.01
+# If set to true, Profit Trailer will look at the highest bid order with enough
+# volume rather than just the highest bid order. Both percentages will be displayed
+# in the Profit % column. This gives you a more realistic representation of your position.
+DCA_orderbook_profit_calculation = true
+# Sell the trading pair if profit reaches the set percentage regardless of all sell
+# strategies being true. Set to zero to disable this.
+DEFAULT_DCA_max_profit = 0
+#
+DEFAULT_DCA_A_sell_strategy = HIGHBB
+DEFAULT_DCA_A_sell_value = 30
+#
+DEFAULT_DCA_B_sell_strategy = GAIN
+DEFAULT_DCA_B_sell_value = 1
+#
+DEFAULT_DCA_C_sell_strategy = RSI
+DEFAULT_DCA_C_sell_value = 50
+# Trailing profit, set to zero to turn off trailing
+DEFAULT_DCA_trailing_profit = 0.3
+# The time period to wait define in munutes while the profit percentage remains
+# above xx percent, defined on the line below this, but has not yet sold. Set to zero to disable this.
+DEFAULT_DCA_take_profit_wait_time = 15
+# The profit percentage above which the bot will attempt to sell a pair if it has
+# not sold for xx minutes, defined on the line above this. Set to zero to disable this.
+DEFAULT_DCA_take_profit_percentage = 2
+# Stop loss triggers
+DEFAULT_DCA_stop_loss_trigger = 0
+DEFAULT_DCA_stop_loss_timeout = 0

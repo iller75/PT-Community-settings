@@ -1,0 +1,311 @@
+# Define the market we are trading (BTC, ETH, XMR, BNB or USDT)
+market = BTC
+# Enable trading (buying,selling and orders) using defined strategies for all pairs
+DEFAULT_trading_enabled = false
+# Define your starting balance from the exchange
+start_balance = 0
+# Only buy coins if the buy cost will not let your balance go below specified amount
+keep_balance = 0.0
+# Only buy coins if the buy cost will not let your balance go below specified amount in %
+keep_balance_percentage = 0
+# This will enable trading for any pairs that you have defined
+enabled_pairs = ALL
+# This will hide any pairs that you have disabled
+hidden_pairs = ALL
+# Adjust trading pairs based on server capability and trading budget
+max_trading_pairs = 6
+# Only buy coins with a minimum volume of specified amount.
+DEFAULT_min_buy_volume = 300
+# coin_min_age is defined in days, it is used to allow the bot to trade only with coins which are older than x days,
+pair_min_listed_days = 15
+# Set to ignore low satoshi coins.
+DEFAULT_min_buy_price = 0.00000600
+# Only purchase a pair if the 24 hour percentage change is above the min price increase.
+#
+# Note: You may need to adjust this to suit market conditions, setting this to 0.01 will only pick positive pairs.
+#
+DEFAULT_buy_min_change_percentage = -14
+# Only purchase a pair if the 24 hour percentage change is below the max price increase.
+DEFAULT_buy_max_change_percentage = 30
+# Max spread % between lowest ask and highest bid to allow a new buy order.
+DEFAULT_max_buy_spread = 3
+# Initial cost setting
+DEFAULT_initial_cost = 0.0025
+# If set to true, it will look at the highest bid order with enough volume rather than just the highest bid order.
+orderbook_profit_calculation = true
+# DCA is a method for averaging down the price of a losing trade, hoping the price will come up to your lower average buy price.
+DEFAULT_DCA_enabled = 4
+# Set the depth of the orderbook to look back and identify the largest sell order.
+DEFAULT_sell_wall_orderbook_depth = 50
+# Set the maximum difference allowed from the average order size within the DEFAULT_sell_wall_orderbook_depth.
+# If this difference is exceeded then the coin will not be bought.
+DEFAULT_sell_wall_diff_percentage = 1000
+
+# *************************************************************************
+#
+#       SPANISH CROSS - BUY STRATEGY - ProfitTrailer 2.1.x
+#
+# This strategy allows you to scalp short term upward trends. The key to this
+# strategy is to ensure you do not overextend yourself by getting your max
+# trading pairs and initial cost right to suit your trading budget. Use the
+# DCA calculator we provide to work these values out covering at least 4 levels
+# of DCA for all your pairs. Once you have those values enter them into this strategy.
+# This DCA calculator also ensure you have a 50/50 split on your trading budget to
+# ensure you have sufficient budget for the sell side of this strategy.
+#
+# It uses a short term EMACROSS indicator to track the trend. It looks
+# for price rises on pairs using EMAGAIN. It then confirms the strength of the
+# rise with STOCH and RSI indicators.
+#
+# Trailing is turned off to ensure we buy into the upward trend as soon as it
+# is recognised.
+#
+# This strategy works in all market conditions.
+#
+#                 SLOW AND STEADY, WINS THE RACE
+# *************************************************************************
+#
+# Do we have a short term Bullish upward trend?
+#
+DEFAULT_A_buy_strategy_label = SHORTTERMTREND
+DEFAULT_A_buy_strategy = EMACROSS
+DEFAULT_A_buy_value = 0.01
+DEFAULT_A_buy_value_limit = 20
+#
+# Is the price rising?
+#
+DEFAULT_B_buy_strategy = EMAGAIN
+DEFAULT_B_buy_value = 0.01
+DEFAULT_B_buy_value_limit = 20.0
+#
+# Do we have a strong sell signal
+#
+DEFAULT_C_buy_strategy = STOCH
+DEFAULT_C_buy_value = 100.1
+DEFAULT_C_buy_value_limit = 29.9
+#
+# Are we overbought or close to being overbought right now?
+#
+DEFAULT_D_buy_strategy = RSI
+DEFAULT_D_buy_value = 100.0
+DEFAULT_D_buy_value_limit = 29.9
+#
+# Trailing is turned off as we are following an upward trend
+#
+DEFAULT_trailing_buy = 0
+# Set the amount of minutes that the bot is not allowed to buy a coin after it was sold.
+DEFAULT_rebuy_timeout = 1
+# Allow initial buys if there is enough volume in order book to fill the order.
+DEFAULT_min_orderbook_volume_percentage = 100
+# *********************************************************************
+#        SPANISH CROSS - SELL STRATEGY - ProfitTrailer 2.1.x
+#
+# This strategy allows you to scalp short term upward trends.
+#
+# This strategy does not use DCA for pairs that wont sell, instead it
+# uses a dilution method using Pending Orders to clear pairs that have
+# not sold in over 4 hours. It relies on having sufficient capital to
+# keep purchasing pairs so that the Pending pairs will clear over time
+# as more of that pair are purchased and sold.
+#
+# If the profit target is exceeded this strategy uses positive DCA (Anti-DCA)
+# at a 4% profit target in order to improve profits by backing the winners
+# and increasing our position size on the trade. It will toss the losing trades
+# using Pending Orders. Note Positive DCA may put the pair at a temporary loss as
+# it increases your average cost. If the upward trend continues the trading
+# pair should quickly recover from this loss or we will attempt to DCA in
+# the normal manner to reduce its average cost and hopefully bring it back
+# into profit or move it to a pending order if we cant recover it.
+#
+# GAIN is used to sell as soon as the current price goes above the GAIN threshold
+# you set.
+#
+# This strategy works in all market condition.
+#
+#                 SLOW AND STEADY, WINS THE RACE
+# *********************************************************************
+#
+# What is the minimum profit we want to make on this trade?
+#
+DEFAULT_A_sell_strategy = GAIN
+DEFAULT_A_sell_value = 1.25
+#
+# Do we have a Bullish Cross?
+#
+DEFAULT_B_sell_strategy_label = SHORTTERMTREND
+DEFAULT_B_sell_strategy = EMACROSS
+DEFAULT_B_sell_value = 0.01
+DEFAULT_B_sell_value_limit = 20
+#
+# Trailing is on to ensure we maximise profits
+#
+DEFAULT_trailing_profit_type = GROW
+DEFAULT_trailing_profit = 0.25
+DEFAULT_trailing_profit_rebound_count = 0
+#
+# This will sell a pair regardless of other settings if max profit is reached
+DEFAULT_max_profit = 0
+# The time period to wait define in munutes while the profit percentage remains above xx percent, defined on the line below this, but has not yet sold.
+DEFAULT_take_profit_wait_time = 10
+# The profit percentage above which the bot will attempt to sell a pair if it has not sold for xx minutes, defined on the line above this.
+DEFAULT_take_profit_percentage = 10
+# The percentage of price deviation allowed from the DEFAULT_take_profit_percentage before resetting the DEFAULT_take_profit_wait_time.
+DEFAULT_take_profit_reset_percentage_move = 0.5
+# Set the value that will trigger a stop loss order If the value of a coin drops below stop loss trigger, it will be automatically sold
+DEFAULT_stop_loss_trigger = 0
+# Set the amount of minutes that the bot is not allowed to buy a coin after if was sold by stop loss trigger
+DEFAULT_stop_loss_timeout = 60
+# Set to true to sell all of your coins with a balance for current market prices
+DEFAULT_panic_sell_enabled = false
+# If x amount of time in minutes has passed since you bought a coin, create a pending order for that pair
+DEFAULT_pending_order_wait_time = 360
+# Cancel pending order for specified coin if avg profit reaches specified amount
+DEFAULT_combined_cancel_pending_trigger = 0.25
+# Sell Only Mode Settings
+DEFAULT_sell_only_mode_enabled = false
+# This is to protect against Bitcoin rising (aka mooning) or dropping automatically turns on / off SOM as required.
+price_trigger_market = BTC
+price_rise_trigger = 7
+price_rise_recover_trigger = 6
+price_drop_trigger = 10
+price_drop_recover_trigger = 3
+# Protect against large market swings by turning on sell only mode.
+consecutive_buy_trigger = 6
+# Turn off sell only mode if we got x consecutive sells with no buys in between
+consecutive_sell_trigger = 4
+# This is for the pairs you do not wish to trade, examples only below,
+# you need to add your own list here. Make sure none of your enabled pairs
+# above is appearing below or that pair wont trade.
+# BNB fees are not yet supported in Binance, so dont buy BNB until you disable the setting
+BNB_trading_enabled = false
+BNB_reserve_amount = 0
+# Pairs delisted from the exchanges
+8BIT_trading_enabled = false
+ADC_trading_enabled = false
+AM_trading_enabled = false
+AMS_trading_enabled = false
+APEX_trading_enabled = false
+APX_trading_enabled = false
+ARB_trading_enabled = false
+BITS_trading_enabled = false
+BITZ_trading_enabled = false
+BLITZ_trading_enabled = false
+BLC_trading_enabled = false
+BOB_trading_enabled = false
+BSTY_trading_enabled = false
+BTA_trading_enabled = false
+BTCD_trading_enabled = false
+CCN_trading_enabled = false
+CLUB_trading_enabled = false
+CPC_trading_enabled = false
+CRBIT_trading_enabled = false
+CRYPT_trading_enabled = false
+CTR_trading_enabled = false
+DAR_trading_enabled = false
+DGC_trading_enabled = false
+DRACO_trading_enabled = false
+DTC_trading_enabled = false
+FAIR_trading_enabled = false
+FC2_trading_enabled = false
+FRK_trading_enabled = false
+FSC2_trading_enabled = false
+GCR_trading_enabled = false
+GEMZ_trading_enabled = false
+GHC_trading_enabled = false
+GP_trading_enabled = false
+GRT_trading_enabled = false
+HKG_trading_enabled = false
+HYPER_trading_enabled = false
+HZ_trading_enabled = false
+J_trading_enabled = false
+KR_trading_enabled = false
+LXC_trading_enabled = false
+MAX_trading_enabled = false
+MEC_trading_enabled = false
+METAL_trading_enabled = false
+MND_trading_enabled = false
+MTR_trading_enabled = false
+MYST_trading_enabled = false
+MZC_trading_enabled = false
+NAUT_trading_enabled = false
+NET_trading_enabled = false
+NEU_trading_enabled = false
+NTRN_trading_enabled = false
+OC_trading_enabled = false
+ORB_trading_enabled = false
+PDC_trading_enabled = false
+PKB_trading_enabled = false
+PRIME_trading_enabled = false
+PXI_trading_enabled = false
+ROOT_trading_enabled = false
+SAFEX_trading_enabled = false
+SCOT_trading_enabled = false
+SCRT_trading_enabled = false
+SFR_trading_enabled = false
+SLG_trading_enabled = false
+SLING_trading_enabled = false
+SNGLS_trading_enabled = false
+SNRG_trading_enabled = false
+SOON_trading_enabled = false
+SPRTS_trading_enabled = false
+SSD_trading_enabled = false
+START_trading_enabled = false
+STEPS_trading_enabled = false
+STV_trading_enabled = false
+SWING_trading_enabled = false
+TES_trading_enabled = false
+TIT_trading_enabled = false
+TRI_trading_enabled = false
+TRK_trading_enabled = false
+TRST_trading_enabled = false
+U_trading_enabled = false
+UFO_trading_enabled = false
+UNIQ_trading_enabled = false
+UNIT_trading_enabled = false
+UNO_trading_enabled = false
+UTC_trading_enabled = false
+VIOR_trading_enabled = false
+VIRAL_trading_enabled = false
+VPN_trading_enabled = false
+VTR_trading_enabled = false
+WARP_trading_enabled = false
+XAUR_trading_enabled = false
+XBB_trading_enabled = false
+XC_trading_enabled = false
+XCO_trading_enabled = false
+XDQ_trading_enabled = false
+XPY_trading_enabled = false
+XVC_trading_enabled = false
+XQN_trading_enabled = false
+XSEED_trading_enabled = false
+XTC_trading_enabled = false
+YBC_trading_enabled = false
+# Pairs on temporary ban
+#
+# Pairs that I wont day trade with
+BITB_trading_enabled = false
+CANN_trading_enabled = false
+DGD_trading_enabled = false
+DOGE_trading_enabled = false
+DOPE_trading_enabled = false
+HSR_trading_enabled = false
+MEME_trading_enabled = false
+MER_trading_enabled = false
+MTL_trading_enabled = false
+POT_trading_enabled = false
+POWR_trading_enabled = false
+SBD_trading_enabled = false
+SC_trading_enabled = false
+SYNX_trading_enabled = false
+TIME_trading_enabled = false
+THC_trading_enabled = false
+TKN_trading_enabled = false
+TRIG_trading_enabled = false
+TRUST_trading_enabled = false
+# Pairs I want to HODL
+NEO_trading_enabled = false
+NEO_DCA_enabled = false
+ETH_trading_enabled = false
+ETH_DCA_enabled = false
+LTC_trading_enabled = false
+LTC_DCA_enabled = false

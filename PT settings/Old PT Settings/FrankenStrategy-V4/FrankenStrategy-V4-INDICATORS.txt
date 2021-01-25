@@ -1,0 +1,46 @@
+# Bollinger bands are a good indicator of if a pair is currently undersold or oversold.
+BB_length = 20
+# Standard Deviation
+BB_std = 2
+# Define the period (in seconds) used by all BB calculation of ProfitTrailer.
+BB_candle_period = 300
+# SMA is calculated by adding the closing price of a pair for a number of
+# time periods and then dividing this total by the number of time periods.
+SMA_cross_candles = 2
+# Define the period (in seconds) used to calculate the SMA lines
+SMA_candle_period = 300
+# Define the SMA time frame (in candles) used to calculate the fast SMA line.
+SMA_fast_length = 8
+# Define the SMA time frame (in candles) used to calculate the slow SMA line.
+SMA_slow_length = 13
+# An exponential moving average (EMA) is a type of moving average that is similar to a
+# simple moving average (SMA), except that more weight is given to the latest data.
+EMA_cross_candles = 40
+# Define the period (in seconds) used to calculate the EMA lines.
+EMA_candle_period = 300
+# Define the EMA time frame (in candles) used to calculate the fast EMA line.
+EMA_fast_length = 8
+# Define the EMA time frame (in candles) used to calculate the slow EMA line.
+EMA_slow_length = 13
+# Define the period (in seconds) used to calculate the RSI lines.
+RSI_candle_period = 300
+# Define the RSI time frame (in candles) used by all RSI calculations
+RSI_length = 14
+# Define the Stochastics RSI time frame (in candles) used by all STOCHRSI calculations
+STOCH_length = 14
+# Define the period (in seconds) used to calculate the MACD lines.
+MACD_candle_period = 300
+# Define the MA time frame (in candles) used to calculate the fast MACD line.
+MACD_fast_Length = 12
+# Define the MA time frame (in candles) used to calculate the slow MACD line.
+MACD_slow_Length = 26
+# Define the time frame (in days) of the EMA (Exponential Moving Average) of the MACD
+MACD_signal = 9
+# Define the period (in seconds) used to calculate the RSI lines.
+OBV_candle_period = 300
+# Total count of candles used to calculate the OBV values, e.g. 15 means we have 15 OBV values
+OBV_length = 50
+# The number (integer) of the first OBV value used for the calculation of the percentage change.
+OBV_signal = 1
+# Always uses 5 minute candles
+SOM_trigger_length = 288

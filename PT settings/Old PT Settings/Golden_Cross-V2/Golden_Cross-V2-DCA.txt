@@ -1,0 +1,251 @@
+# Only buy coins if the buy cost will not let your balance go below specified amount
+DCA_keep_balance = 0
+# Only buy coins if the buy cost will not let your balance go below specified amount in %
+DCA_keep_balance_percentage = 0
+# DCA is a method for averaging down the price of a losing trade, hoping the price will come up to your lower average buy price.
+DEFAULT_DCA_max_cost = 10
+# Define max amount of times DCA is allowed to buy a pair.
+DEFAULT_DCA_max_buy_times = 5
+# Set the loss percentage required before a DCA buy can take place.
+DEFAULT_DCA_buy_trigger = 5
+# Set the percentage of TCV purchased when making a DCA buy.
+DEFAULT_DCA_buy_percentage = 100
+# Set the buy percentage to be used instead of DEFAULT_DCA_buy_percentage when sell only mode (SOM) is on
+SOM_DCA_buy_percentage = 100
+# Only purchase a pair if the 24 hour percentage change is above the min price increase.
+DEFAULT_DCA_buy_min_change_percentage = 0
+# Only purchase a pair if the 24 hour percentage change is below the max price increase.
+DEFAULT_DCA_buy_max_change_percentage = 50
+# Allow DCA to buy if there's enough volume in order book to fill the order.
+DEFAULT_DCA_min_buy_volume = 10
+DEFAULT_DCA_min_orderbook_volume_percentage = 120
+# Max spread % between lowest ask and highest bid to allow a new buy order.
+DEFAULT_DCA_max_buy_spread = 3
+# The timeout period (in minutes) that the bot is not allowed to buy a coin after it was last DCA'ed.
+DEFAULT_DCA_rebuy_timeout = 10
+# The time period (in minutes) that has passed since we bought a particular pair, if exceeded then create a pending order for that pair
+DEFAULT_DCA_pending_order_wait_time = 0
+# Set this value to true to allow DCA to continue buying even if no new buys are allowed as the bot is in Sell Only Mode.
+DEFAULT_DCA_ignore_sell_only_mode = false
+# *************************************************************************
+#
+#       GOLDEN CROSS - BUY STRATEGY - ProfitTrailer 2.1.x
+#
+# This strategy allows us to buy into a bullish upward trend and ride it through
+# until the trend changes direction downward. It uses three EMACROSS strategies
+# on the 5 minute chart using 3 different timeframes on a 5 minute chart for the
+# crosses. It looks for a GOLDEN CROSS (50/200) that indicates a long term
+# bullish upward trend. It confirms this with a Long Term (21/55) EMACROSS indicator
+# and a Short Term (8/13) EMACROSS indicator. It then uses STOCH and RSI indicators
+# to determine if we have strong sell signals and are in an overbought range
+# indicating there is a strong upward trend.
+#
+# Trailing is turned off to ensure we buy into the upward trend as early as possible.
+#
+# PLEASE NOTE: This is a HIGH RISK strategy that relies on strong upward trends
+# and bullish sentiment in the market. It makes use of a STOP LOSS to prevent
+# significant losses from the potential to catch a falling knife when the upward
+# trend reverses quickly. The possibility exists that you could lose some or all
+# of your investment capital and therefore you should not invest money that you
+# cannot afford to lose. You should be aware of all risks associated with
+# investing / trading in cryptocurrency and should seek professional financial
+# advice from an independent,competent, licensed accountant or financial advisor.
+#
+# This strategy is good for high volatility Bull and sideways market conditions.
+#
+#          RIDE THE TREND, TOSS THE LOSERS AND BACK THE WINNERS
+# *************************************************************************
+#
+# Do we have a long term bullish upward trend with a Golden Cross?
+#
+DEFAULT_DCA_A_buy_strategy_label = GOLDENCROSS
+DEFAULT_DCA_A_buy_strategy = EMACROSS
+DEFAULT_DCA_A_buy_value = 0.05
+DEFAULT_DCA_A_buy_value_limit = 20
+#
+# Look for a small dip to buy
+#
+DEFAULT_DCA_B_buy_strategy = EMAGAIN
+DEFAULT_DCA_B_buy_value = -0.01
+DEFAULT_DCA_B_buy_value_limit = -20
+#
+# Trailing is turned off as we are following an upward trend
+#
+DEFAULT_DCA_trailing_buy = 0
+#
+# Positive DCA triggers
+#
+DEFAULT_DCA_buy_trigger_1 = 5
+DEFAULT_DCA_buy_trigger_2 = -1
+DEFAULT_DCA_buy_trigger_3 = -1
+DEFAULT_DCA_buy_trigger_4 = -1
+DEFAULT_DCA_buy_trigger_5 = -1
+# Sets the per trigger level percentage of TCV to purchase when making a DCA buy.
+# Purchase the same number of coins at each DCA level effectively doubling down.
+DEFAULT_DCA_buy_percentage_1 = 100
+DEFAULT_DCA_buy_percentage_2 = 50
+DEFAULT_DCA_buy_percentage_3 = 33.3333333333333
+DEFAULT_DCA_buy_percentage_4 = 25
+DEFAULT_DCA_buy_percentage_5 = 20
+DEFAULT_DCA_buy_percentage_6 = 16.6666666666667
+DEFAULT_DCA_buy_percentage_7 = 14.2857142857143
+DEFAULT_DCA_buy_percentage_8 = 12.5
+DEFAULT_DCA_buy_percentage_9 = 11.1111111111111
+DEFAULT_DCA_buy_percentage_10 = 10
+DEFAULT_DCA_buy_percentage_11 = 9.09090909090909
+DEFAULT_DCA_buy_percentage_12 = 8.33333333333333
+DEFAULT_DCA_buy_percentage_13 = 7.69230769230769
+DEFAULT_DCA_buy_percentage_14 = 7.14285714285714
+DEFAULT_DCA_buy_percentage_15 = 6.66666666666667
+DEFAULT_DCA_buy_percentage_16 = 6.25
+DEFAULT_DCA_buy_percentage_17 = 5.88235294117647
+DEFAULT_DCA_buy_percentage_18 = 5.55555555555556
+DEFAULT_DCA_buy_percentage_19 = 5.26315789473684
+DEFAULT_DCA_buy_percentage_20 = 5
+DEFAULT_DCA_buy_percentage_21 = 4.76190476190476
+DEFAULT_DCA_buy_percentage_22 = 4.54545454545455
+DEFAULT_DCA_buy_percentage_23 = 4.34782608695652
+DEFAULT_DCA_buy_percentage_24 = 4.16666666666667
+DEFAULT_DCA_buy_percentage_25 = 4
+DEFAULT_DCA_buy_percentage_26 = 3.84615384615385
+DEFAULT_DCA_buy_percentage_27 = 3.7037037037037
+DEFAULT_DCA_buy_percentage_28 = 3.57142857142857
+DEFAULT_DCA_buy_percentage_29 = 3.44827586206897
+DEFAULT_DCA_buy_percentage_30 = 3.33333333333333
+DEFAULT_DCA_buy_percentage_31 = 3.2258064516129
+DEFAULT_DCA_buy_percentage_32 = 3.125
+DEFAULT_DCA_buy_percentage_33 = 3.03030303030303
+DEFAULT_DCA_buy_percentage_34 = 2.94117647058824
+DEFAULT_DCA_buy_percentage_35 = 2.85714285714286
+DEFAULT_DCA_buy_percentage_36 = 2.77777777777778
+DEFAULT_DCA_buy_percentage_37 = 2.7027027027027
+DEFAULT_DCA_buy_percentage_38 = 2.63157894736842
+DEFAULT_DCA_buy_percentage_39 = 2.56410256410256
+DEFAULT_DCA_buy_percentage_40 = 2.5
+DEFAULT_DCA_buy_percentage_41 = 2.4390243902439
+DEFAULT_DCA_buy_percentage_42 = 2.38095238095238
+DEFAULT_DCA_buy_percentage_43 = 2.32558139534884
+DEFAULT_DCA_buy_percentage_44 = 2.27272727272727
+DEFAULT_DCA_buy_percentage_45 = 2.22222222222222
+DEFAULT_DCA_buy_percentage_46 = 2.17391304347826
+DEFAULT_DCA_buy_percentage_47 = 2.12765957446808
+DEFAULT_DCA_buy_percentage_48 = 2.08333333333333
+DEFAULT_DCA_buy_percentage_49 = 2.04081632653061
+DEFAULT_DCA_buy_percentage_50 = 2
+DEFAULT_DCA_buy_percentage_51 = 1.96078431372549
+DEFAULT_DCA_buy_percentage_52 = 1.92307692307692
+DEFAULT_DCA_buy_percentage_53 = 1.88679245283019
+DEFAULT_DCA_buy_percentage_54 = 1.85185185185185
+DEFAULT_DCA_buy_percentage_55 = 1.81818181818182
+DEFAULT_DCA_buy_percentage_56 = 1.78571428571429
+DEFAULT_DCA_buy_percentage_57 = 1.75438596491228
+DEFAULT_DCA_buy_percentage_58 = 1.72413793103448
+DEFAULT_DCA_buy_percentage_59 = 1.69491525423729
+DEFAULT_DCA_buy_percentage_60 = 1.66666666666667
+DEFAULT_DCA_buy_percentage_61 = 1.63934426229508
+DEFAULT_DCA_buy_percentage_62 = 1.61290322580645
+DEFAULT_DCA_buy_percentage_63 = 1.58730158730159
+DEFAULT_DCA_buy_percentage_64 = 1.5625
+DEFAULT_DCA_buy_percentage_65 = 1.53846153846154
+DEFAULT_DCA_buy_percentage_66 = 1.51515151515151
+DEFAULT_DCA_buy_percentage_67 = 1.49253731343284
+DEFAULT_DCA_buy_percentage_68 = 1.47058823529412
+DEFAULT_DCA_buy_percentage_69 = 1.44927536231884
+DEFAULT_DCA_buy_percentage_70 = 1.42857142857143
+DEFAULT_DCA_buy_percentage_71 = 1.40845070422535
+DEFAULT_DCA_buy_percentage_72 = 1.38888888888889
+DEFAULT_DCA_buy_percentage_73 = 1.36986301369863
+DEFAULT_DCA_buy_percentage_74 = 1.35135135135135
+DEFAULT_DCA_buy_percentage_75 = 1.33333333333333
+DEFAULT_DCA_buy_percentage_76 = 1.31578947368421
+DEFAULT_DCA_buy_percentage_77 = 1.2987012987013
+DEFAULT_DCA_buy_percentage_78 = 1.28205128205128
+DEFAULT_DCA_buy_percentage_79 = 1.26582278481013
+DEFAULT_DCA_buy_percentage_80 = 1.25
+DEFAULT_DCA_buy_percentage_81 = 1.23456790123457
+DEFAULT_DCA_buy_percentage_82 = 1.21951219512195
+DEFAULT_DCA_buy_percentage_83 = 1.20481927710843
+DEFAULT_DCA_buy_percentage_84 = 1.19047619047619
+DEFAULT_DCA_buy_percentage_85 = 1.17647058823529
+DEFAULT_DCA_buy_percentage_86 = 1.16279069767442
+DEFAULT_DCA_buy_percentage_87 = 1.14942528735632
+DEFAULT_DCA_buy_percentage_88 = 1.13636363636364
+DEFAULT_DCA_buy_percentage_89 = 1.12359550561798
+DEFAULT_DCA_buy_percentage_90 = 1.11111111111111
+DEFAULT_DCA_buy_percentage_91 = 1.0989010989011
+DEFAULT_DCA_buy_percentage_92 = 1.08695652173913
+DEFAULT_DCA_buy_percentage_93 = 1.0752688172043
+DEFAULT_DCA_buy_percentage_94 = 1.06382978723404
+DEFAULT_DCA_buy_percentage_95 = 1.05263157894737
+DEFAULT_DCA_buy_percentage_96 = 1.04166666666667
+DEFAULT_DCA_buy_percentage_97 = 1.03092783505155
+DEFAULT_DCA_buy_percentage_98 = 1.02040816326531
+DEFAULT_DCA_buy_percentage_99 = 1.01010101010101
+DEFAULT_DCA_buy_percentage_100 = 1
+# If set to true, Profit Trailer will look at the highest bid order with enough volume rather than just the highest bid order.
+DCA_orderbook_profit_calculation = true
+# Sell the trading pair if profit reaches the set percentage regardless of all sell strategies being true.
+DEFAULT_DCA_max_profit = 0
+# *********************************************************************
+#        GOLDEN CROSS - SELL STRATEGY - ProfitTrailer 2.1.x
+#
+# This strategy looks for a reversal of the short term trend
+# indicator to determine if the upward trend has completed its cycle.
+# If the profit target is exceeded and we are still on an upward trend
+# it then uses positive DCA (Anti-DCA) at a 4% profit target in order to
+# improve profits by backing the winners and increasing our position size
+# on the trade. It will toss the losing trades using a stop loss. The stop
+# loss is also there to pick up any sudden trend reversals to prevent catching
+# a falling knife. Note Positive DCA may put the pair at a temporary loss as
+# it increases your average cost. If the upward trend continues the trading
+# pair should quickly recover from this loss or we will attempt to DCA in
+# the normal manner to reduce its average cost and hopefully bring it back
+# into profit or stop it out if we cant recover it.
+# GAIN is used to sell as soon as the current price goes above the GAIN threshold
+# you set.
+#
+# Trailing is turned off to ensure we sell as close as possible to the peak
+# of the upward trend as the trend reverses down.
+#
+# PLEASE NOTE: This is a HIGH RISK strategy that relies on strong upward trends
+# and bullish sentiment in the market. It makes use of a STOP LOSS to prevent
+# significant losses from the potential to catch a falling knife when the upward
+# trend reverses quickly. The possibility exists that you could lose some or all
+# of your investment capital and therefore you should not invest money that you
+# cannot afford to lose. You should be aware of all risks associated with
+# investing / trading in cryptocurrency and should seek professional financial
+# advice from an independent,competent, licensed accountant or financial advisor.
+#
+# This strategy works in either a Bull or Sideways market. It is best
+# used in a Bull market where volatility is high.
+#
+#          RIDE THE TREND, TOSS THE LOSERS AND BACK THE WINNERS
+# *********************************************************************
+#
+# Do we have a Bearish Cross?
+#
+DEFAULT_DCA_A_sell_strategy_label = SHORTTERMTREND
+DEFAULT_DCA_A_sell_strategy = EMACROSS
+DEFAULT_DCA_A_sell_value = -0.01
+DEFAULT_DCA_A_sell_value_limit = -20
+#
+# What is the minimum profit we want to make on this trade?
+#
+DEFAULT_DCA_B_sell_strategy = GAIN
+DEFAULT_DCA_B_sell_value = 2.0
+#
+# Trailing should take us to the peak of the trade cycle
+#
+#DEFAULT_DCA_trailing_profit_type=GROW
+DEFAULT_DCA_trailing_profit = 0
+DEFAULT_DCA_trailing_profit_rebound_count = 0
+
+# The time period to wait define in minutes while the profit percentage remains above xx percent, defined on the line below this, but has not yet sold.
+DEFAULT_DCA_take_profit_wait_time = 10
+# The profit percentage above which the bot will attempt to sell a pair if it has not sold for xx minutes, defined on the line above this.
+DEFAULT_DCA_take_profit_percentage = 10
+# The percentage of price deviation allowed from the DEFAULT_take_profit_percentage before resetting the DEFAULT_take_profit_wait_time.
+DEFAULT_DCA_take_profit_reset_percentage_move = 0.5
+# Stop loss triggers
+DEFAULT_DCA_stop_loss_trigger = -2
+DEFAULT_DCA_stop_loss_timeout = 1

@@ -1,0 +1,426 @@
+#
+# GENERAL SETTINGS
+#
+
+# Define the market we are trading (BTC, ETH, XMR, BNB or USDT)
+market = BTC
+# This will enable trading for any pairs that you have defined
+enabled_pairs = ALL
+# Enable trading (buying,selling and orders) using defined strategies for all pairs
+DEFAULT_trading_enabled = false
+# This will hide any pairs that you have disabled
+hidden_pairs = BNB
+# DCA is a method for averaging down the price of a losing trade, hoping the price will come up to your lower average buy price.
+DEFAULT_DCA_enabled = 5
+# Choose to combine pending orders for the same coin into one item in the pending log or keep them as separate items.
+DEFAULT_combine_pending_orders = true
+# Define your starting balance from the exchange
+start_balance = 0
+# Only buy coins if the buy cost will not let your balance go below specified amount
+keep_balance = 0.0
+# Only buy coins if the buy cost will not let your balance go below specified amount in %
+keep_balance_percentage = 0
+
+#
+# POSSIBLE BUY LOG FILTERING
+#
+
+# Set the depth of the orderbook to look back and identify the largest sell order.
+DEFAULT_sell_wall_orderbook_depth = 50
+# Set the maximum difference allowed from the average order size within the DEFAULT_sell_wall_orderbook_depth.
+# If this difference is exceeded then the coin will not be bought.
+DEFAULT_sell_wall_diff_percentage = 5000
+# Adjust trading pairs based on server capability and trading budget
+max_trading_pairs = 6
+# Set the amount of the market currency (BTC, ETH, XMR, BNB, or USDT) we will use to buy a pair. This amount is spent for EACH initial purchase.
+DEFAULT_initial_cost = 0.016
+# An alternative to the fixed initial cost above, set the percentage of your TCV (Total Current Value) to be used for each initial purchase.
+DEFAULT_initial_cost_percentage = 0
+#
+# Rule 2. The trading pair must have high volume;
+#
+# Only buy coins with a minimum volume of specified amount.
+DEFAULT_min_buy_volume = 200
+# Set to ignore low satoshi coins.
+DEFAULT_min_buy_price = 0.00000600
+# Max spread % between lowest ask and highest bid to allow a new buy order.
+DEFAULT_max_buy_spread = 3
+# Allow initial buys if there is enough volume in order book to fill the order.
+DEFAULT_min_orderbook_volume_percentage = 100
+# Set the amount of minutes that the bot is not allowed to buy a coin after it was sold.
+DEFAULT_rebuy_timeout = 1
+#
+# Rule 6. The trading pairs price must be down at least a defined percentage;
+#
+# Only purchase a pair if the 24 hour percentage change is above the min price increase.
+# Note: You may need to adjust this to suit market conditions, setting this to 0.01 will only pick positive pairs.
+DEFAULT_buy_min_change_percentage = -30
+# Only purchase a pair if the 24 hour percentage change is below the max price increase.
+DEFAULT_buy_max_change_percentage = 30
+# coin_min_age is defined in days, it is used to allow the bot to trade only with coins which are older than x days,
+pair_min_listed_days = 15
+
+#
+# BUY SETTINGS
+#
+
+# *************************************************************************
+#
+#       CONNORS RSI - BUY STRATEGY - ProfitTrailer 2.1.x
+#
+# This strategy implements the Connors 2 Period RSI Pullback strategy.
+#
+# Pullback trading is one of the most popular forms of trading amongst traders.
+# It has been used in the Forex, Options, Equity and Commodities markets for many
+# years by both Day Traders and Swing Traders alike.
+#
+# A pullback, also referred to as a retracement or consolidation, is a small temporary
+# fall in a trading pairs price from its peak in a prevailing upward trend.
+#
+# This strategy is based on 20 years of backtesting data done in the financial markets by
+# Laurence A. Connors in his book titled How Markets Work - a quantitive guide to
+# Stock Market behaviour. In his susbsequent books entitled the Connors Research
+# Trading Strategy Series he describes the 2 Period RSI Pullback strategy.
+#
+# The strategy consists of 9 basic rules, some of which we cannot directly reproduce,
+# so I have had to adapt these rules to suit ProfitTrailer's current capabilities and for
+# intraday trading as follows:
+#
+# 1. The trading pair must be in a long term uptrend according to the 200 day moving average;
+# 2. The trading pair must have high volume;
+# 3. The trading pair must have good volatility according to the 100 day moving average;
+# 4. The trading pair must be in a strong uptrend;
+# 5. The trading pair is currently down in price;
+# 6. The trading pairs price must be down at least a defined percentage;
+# 7. The 2 period RSI must be below 20;
+# 8. Buy on a lower intraday price opportunity;
+# 9. Exit the trade when the 2 period RSI is over 70.
+#
+# You will need to purchase his books to see the original rules if you want to compare these.
+#
+# This is an advanced strategy best suited to a Bear or oscillating / sideways market
+# but will work in all market conditions.
+#
+#                       FEWER TRADES, BETTER QUALITY
+# *************************************************************************
+#
+# Rule 1. The trading pair must be in a long term uptrend according to the 200 day moving average;
+#
+DEFAULT_A_buy_strategy_label = GOLDENCROSS
+DEFAULT_A_buy_strategy = EMACROSS
+DEFAULT_A_buy_value = 0.01
+DEFAULT_A_buy_value_limit = 20
+#
+# Rule 2. The trading pair must have high volume;
+#
+DEFAULT_B_buy_strategy = STOCHRSIK
+DEFAULT_B_buy_value = 20
+DEFAULT_B_buy_value_limit = 0
+#
+# Rule 3. The trading pair must have good volatility according to teh 100 day moving average;
+#
+DEFAULT_C_buy_strategy_label = DEATHCROSS
+DEFAULT_C_buy_strategy = EMACROSS
+DEFAULT_C_buy_value = 0.01
+DEFAULT_C_buy_value_limit = 20
+#
+# Rule 4. The trading pair must be in a strong uptrend;
+#
+DEFAULT_D_buy_strategy_label = CONNORSCROSS
+DEFAULT_D_buy_strategy = EMACROSS
+DEFAULT_D_buy_value = 0.01
+DEFAULT_D_buy_value_limit = 20
+#
+# Rule 5. The trading pair is currently down in price;
+# Rule 6. The trading pairs price must be down at least a defined percentage;
+#
+DEFAULT_F_buy_strategy = LOSS
+DEFAULT_F_buy_value = -0.01
+DEFAULT_F_buy_value_limit = -2.0
+#
+# Rule 7. The 2 period RSI must be below 20
+#
+DEFAULT_G_buy_strategy_label = CONNORSRSI
+DEFAULT_G_buy_strategy = RSI
+DEFAULT_G_buy_value = 20
+DEFAULT_G_buy_value_limit = 0
+#
+# Rule 8. Buy on a lower intraday price opportunity;
+#
+DEFAULT_H_buy_strategy = STOCHRSID
+DEFAULT_H_buy_value = 20
+DEFAULT_H_buy_value_limit = 0
+#
+# Trailing is turned off as we are following an upward trend
+#
+DEFAULT_trailing_buy = 0
+
+
+# *********************************************************************
+#        CONNORS 2RSI - SELL STRATEGY - ProfitTrailer 2.1.x
+#
+# This strategy implements the Connors 2 Period RSI Pullback strategy.
+#
+# Pullback trading is one of the most popular forms of trading amongst traders.
+# It has been used in the Forex, Options, Equity and Commodities markets for many
+# years by both Day Traders and Swing Traders alike.
+#
+# A pullback, also referred to as a retracement or consolidation, is a small temporary
+# fall in a trading pairs price from its peak in a prevailing upward trend.
+#
+# This strategy is based on 20 years of backtesting data done in the financial markets by
+# Laurence A. Connors in his book titled How Markets Work - a quantitive guide to
+# Stock Market behaviour. In his susbsequent books entitled the Connors Research
+# Trading Strategy Series he describes the 2 Period RSI Pullback strategy.
+#
+# The strategy consists of 9 basic rules, some of which we cannot directly reproduce,
+# so I have had to adapt these rules to suit ProfitTrailer's current capabilities and for
+# intraday trading as follows:
+#
+# 1. The trading pair must be in a long term uptrend according to the 200 day moving average;
+# 2. The trading pair must have high volume;
+# 3. The trading pair must have good volatility according to the 100 day moving average;
+# 4. The trading pair must be in a strong uptrend;
+# 5. The trading pair is currently down in price;
+# 6. The trading pairs price must be down at least a defined percentage;
+# 7. The 2 period RSI must be below 20;
+# 8. Buy on a lower intraday price opportunity;
+# 9. Exit the trade when the 2 period RSI is over 70.
+#
+# You will need to purchase his books to see the original rules if you want to compare these.
+#
+# This is an advanced strategy best suited to a Bear or oscillating / sideways market
+# but will work in all market conditions.
+#
+#                       FEWER TRADES, BETTER QUALITY
+# *********************************************************************
+#
+# What is the minimum profit we want to make on this trade?
+#
+DEFAULT_A_sell_strategy = GAIN
+DEFAULT_A_sell_value = 1.25
+#
+# Are we overbought or close to being overbought right now?
+#
+DEFAULT_B_sell_strategy_label = CONNORSMACD
+DEFAULT_B_sell_strategy = MACD
+DEFAULT_B_sell_value = -0.000000001
+DEFAULT_B_sell_value_limit = -1
+#
+# Rule 9. Exit the trade when the 2 period RSI is over 70.
+#
+DEFAULT_C_sell_strategy_label = CONNORSRSI
+DEFAULT_C_sell_strategy = RSI
+DEFAULT_C_sell_value = 69.9
+DEFAULT_C_sell_value_limit = 100.1
+#
+# Trailing is turned off to sell based on the rules above
+#
+# Set the type of trailing you want to use DEFAULT, GROW, SHRINK
+DEFAULT_trailing_profit_type = GROW
+# Once all sell strategies are true, the bot will make note of the current bid price and begin watching.
+# The price needs to rise and then fall by at least the percentage specified in order for a sell to be attempted.
+DEFAULT_trailing_profit = 0.01
+# Set the number of times you want to see the price fluctuate into and out of a good trail before making the buy.
+DEFAULT_trailing_profit_rebound_count = 0
+# If set to true, it will look at the highest bid order with enough volume rather than just the highest bid order.
+orderbook_profit_calculation = true
+# This will sell a pair regardless of other settings if max profit is reached
+DEFAULT_max_profit = 0
+# The time period to wait define in munutes while the profit percentage remains above xx percent, defined on the line below this, but has not yet sold.
+DEFAULT_take_profit_wait_time = 20
+# The profit percentage above which the bot will attempt to sell a pair if it has not sold for xx minutes, defined on the line above this.
+DEFAULT_take_profit_percentage = 10
+# The percentage of price deviation allowed from the DEFAULT_take_profit_percentage before resetting the DEFAULT_take_profit_wait_time.
+DEFAULT_take_profit_reset_percentage_move = 0.25
+# If x amount of time in minutes has passed since you bought a coin, create a pending order for that pair
+DEFAULT_pending_order_wait_time = 0
+# If the price has dropped x% since we bought a coin and we have not sold it (and it's still in the pairs log),
+# create limit sell order for that pair at a price equivalent to your GAIN strategy sell_value.
+DEFAULT_pending_order_price_drop_trigger = -5
+# Cancel pending order for specified coin if avg profit reaches specified amount
+DEFAULT_combined_cancel_pending_trigger = -2
+# Set the value that will trigger a stop loss order If the value of a coin drops below stop loss trigger, it will be automatically sold
+DEFAULT_stop_loss_trigger = 0
+# Set the amount of minutes that the bot is not allowed to buy a coin after if was sold by stop loss trigger
+DEFAULT_stop_loss_timeout = 60
+# Set to true to sell all of your coins with a balance for current market prices
+DEFAULT_panic_sell_enabled = false
+
+#
+# SELL ONLY MODE
+#
+
+# Manually enable Sell Only Mode (SOM) for all your coins. No more purchases will be made. The bot will continue to make sales.
+DEFAULT_sell_only_mode_enabled = false
+# Protect against large market swings by turning on sell only mode.
+consecutive_buy_trigger = 16
+# Turn off sell only mode if we got x consecutive sells with no buys in between
+consecutive_sell_trigger = 2
+# This is to protect against Bitcoin rising (aka mooning) or dropping automatically turns on / off SOM as required.
+price_trigger_market = BTC
+# Turn on sell only mode if the price rises by the set percentage.
+price_rise_trigger = 7
+# Turn off sell only mode if it was activated by price rise and the price change is now back below the set threshold.
+price_rise_recover_trigger = 6
+# Turn on sell only mode (SOM) if the price drops by the set percentage.
+price_drop_trigger = 10
+# Turn off sell only mode if it was activated by a price drop the price change is now back above the set threshold.
+price_drop_recover_trigger = 3
+
+#
+# Coin Specific Settings
+#
+
+# This is for the pairs you do not wish to trade, examples only below,
+# you need to add your own list here. Make sure none of your enabled pairs
+# above is appearing below or that pair wont trade.
+# BNB fees are not yet supported in Binance, so dont buy BNB until you disable the setting
+BNB_trading_enabled = false
+BNB_reserve_amount = 0
+
+#
+# Pairs delisted from the exchanges
+#
+8BIT_trading_enabled = false
+ADC_trading_enabled = false
+AM_trading_enabled = false
+AMS_trading_enabled = false
+APEX_trading_enabled = false
+APX_trading_enabled = false
+ARB_trading_enabled = false
+BCN_trading_enabled = false
+BITS_trading_enabled = false
+BITZ_trading_enabled = false
+BLITZ_trading_enabled = false
+BLC_trading_enabled = false
+BOB_trading_enabled = false
+BSTY_trading_enabled = false
+BTA_trading_enabled = false
+BTCD_trading_enabled = false
+CCN_trading_enabled = false
+CHAT_trading_enabled = false
+CLUB_trading_enabled = false
+CPC_trading_enabled = false
+CRBIT_trading_enabled = false
+CRYPT_trading_enabled = false
+CTR_trading_enabled = false
+DAR_trading_enabled = false
+DGC_trading_enabled = false
+DRACO_trading_enabled = false
+DTC_trading_enabled = false
+FAIR_trading_enabled = false
+FC2_trading_enabled = false
+FRK_trading_enabled = false
+FSC2_trading_enabled = false
+GCR_trading_enabled = false
+GEMZ_trading_enabled = false
+GHC_trading_enabled = false
+GP_trading_enabled = false
+GRT_trading_enabled = false
+HKG_trading_enabled = false
+HSR_trading_enabled = false
+HYPER_trading_enabled = false
+HZ_trading_enabled = false
+ICN_trading_enabled = false
+J_trading_enabled = false
+KR_trading_enabled = false
+LXC_trading_enabled = false
+MAX_trading_enabled = false
+MEC_trading_enabled = false
+METAL_trading_enabled = false
+MND_trading_enabled = false
+MTR_trading_enabled = false
+MYST_trading_enabled = false
+MZC_trading_enabled = false
+NAUT_trading_enabled = false
+NET_trading_enabled = false
+NEU_trading_enabled = false
+NTRN_trading_enabled = false
+OC_trading_enabled = false
+ORB_trading_enabled = false
+PDC_trading_enabled = false
+PKB_trading_enabled = false
+PRIME_trading_enabled = false
+PXI_trading_enabled = false
+ROOT_trading_enabled = false
+RPX_trading_enabled = false
+SAFEX_trading_enabled = false
+SCOT_trading_enabled = false
+SCRT_trading_enabled = false
+SFR_trading_enabled = false
+SLG_trading_enabled = false
+SLING_trading_enabled = false
+SNGLS_trading_enabled = false
+SNRG_trading_enabled = false
+SOON_trading_enabled = false
+SPRTS_trading_enabled = false
+SSD_trading_enabled = false
+START_trading_enabled = false
+STEPS_trading_enabled = false
+STV_trading_enabled = false
+SWING_trading_enabled = false
+TES_trading_enabled = false
+TIT_trading_enabled = false
+TRI_trading_enabled = false
+TRIG_trading_enabled = false
+TRK_trading_enabled = false
+TRST_trading_enabled = false
+U_trading_enabled = false
+UFO_trading_enabled = false
+UNIQ_trading_enabled = false
+UNIT_trading_enabled = false
+UNO_trading_enabled = false
+UTC_trading_enabled = false
+VEN_trading_enabled = false
+VIOR_trading_enabled = false
+VIRAL_trading_enabled = false
+VPN_trading_enabled = false
+VTR_trading_enabled = false
+WARP_trading_enabled = false
+XAUR_trading_enabled = false
+XBB_trading_enabled = false
+XC_trading_enabled = false
+XCO_trading_enabled = false
+XDQ_trading_enabled = false
+XPY_trading_enabled = false
+XVC_trading_enabled = false
+XQN_trading_enabled = false
+XSEED_trading_enabled = false
+XTC_trading_enabled = false
+YBC_trading_enabled = false
+
+#
+# Pairs that I wont day trade with
+#
+BITB_trading_enabled = false
+CANN_trading_enabled = false
+DGD_trading_enabled = false
+DOGE_trading_enabled = false
+DOPE_trading_enabled = false
+MEME_trading_enabled = false
+MER_trading_enabled = false
+MTL_trading_enabled = false
+POT_trading_enabled = false
+POWR_trading_enabled = false
+SBD_trading_enabled = false
+SC_trading_enabled = false
+SYNX_trading_enabled = false
+TIME_trading_enabled = false
+THC_trading_enabled = false
+TKN_trading_enabled = false
+TRUST_trading_enabled = false
+
+#
+# Pairs on temporary ban
+#
+
+#
+# Pairs I want to HODL
+#
+NEO_trading_enabled = false
+NEO_DCA_enabled = false
+ETH_trading_enabled = false
+ETH_DCA_enabled = false
+LTC_trading_enabled = false
+LTC_DCA_enabled = false
