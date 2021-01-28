@@ -1,4 +1,7 @@
-In INDICATORS:
+Contributed by Hoffer49
+###############################################
+In INDICATORS config:
+###############################################
 1h_MACDSL_candle_period = 3600
 1h_MACDSL_fast_Length = 12
 1h_MACDSL_slow_Length = 26
@@ -20,9 +23,11 @@ In INDICATORS:
 1h_MACDL_CROSS_fast_indicator = MACD
 
 1h_MACSL_CROSS_fast_indicator_label = 1h_MACSL
-1h_MACSL_CROSS_fast_indicator = MACD(edited)
-[4:05 PM]
-and then in PAIRS you would put something like this
+1h_MACSL_CROSS_fast_indicator = MACD
+
+#############################################
+In PAIRS config you would put something like this:
+#############################################
 ### BUY ON CROSS 
 
 #When MACD line crosses ABOVE 0
@@ -53,8 +58,4 @@ DEFAULT_B_sell_value = 0
 
 #When MACD line crosses BELOW the SIGNAL line
 DEFAULT_C_sell_strategy_label = 1h_MACDL_SL_CROSS
-DEFAULT_C_sell_strategy = CROSSUNDER(edited)
-[4:06 PM]
-I think they work...you'll have to test it out...but I believe this is how to do it(edited)
-[4:07 PM]
-A & B are crosses over 0, C is when the MACD and SIGNAL lines cross
+DEFAULT_C_sell_strategy = CROSSUNDER
