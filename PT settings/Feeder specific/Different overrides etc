@@ -1,0 +1,19 @@
+ "MarketConditionsGrouping": {
+    "Condition": "[market.CurrentBaseCoinPrice] - [market.BaseCoinLongSma] > [config.SmaValue]",
+    "Configs": [
+      {
+        "Name": "Bull",
+        "SmaValue": "0",
+        "Override": {
+        }
+      },
+      {
+        "Name": "Bear",
+        "SmaValue": "-100000000",
+        "Override": {
+        }
+      }
+    ]
+  },
+  
+  
